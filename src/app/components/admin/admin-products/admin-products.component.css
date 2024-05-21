@@ -1,0 +1,10 @@
+.prodImage{
+    height: 300px;
+}
+.card-title{
+    font-size: 20px;
+}
+.col-8{
+    display: grid;
+    grid-template-columns:auto auto auto;
+}

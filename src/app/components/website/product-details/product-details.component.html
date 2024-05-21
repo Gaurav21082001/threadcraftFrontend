@@ -1,0 +1,24 @@
+<section class="product-details" *ngIf="product">
+    <div class="row">
+
+        <img class="product-image" [src]="product.imageUrl" />
+
+    </div>
+    <div class="col">
+        <div class="details">
+            <h2 class="product-brand">{{product.productName}}</h2>
+            <p class="product-short-des">{{product.description}}</p>
+            <span class="product-price">{{product.price | currency:'INR'}}</span>
+            <span class="product-actual-price">{{product.actualPrice | currency:'INR'}}</span>
+
+            
+            <div class="btn-align">
+                <button class="btn cart-btn" (click)="onAddToCart(product.productId)">add to cart</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</section>

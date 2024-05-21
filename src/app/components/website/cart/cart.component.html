@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="row">
+        <div class="row" *ngIf="cartItems?.length;else emptyCart">
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Shopping Cart</b></h4>
+                        </div>
+                        <div class="col align-self-center text-right text-muted">{{cartItems.length}} items</div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center" *ngFor="let item of cartItems ">
+
+                        <div class="col-2"><img class="img-fluid" [alt]="item.productDetails.productName"
+                                [src]="item.productDetails.imageUrl"></div>
+                        <div class="col">
+                            <div class="row text-muted">{{item.productDetails?.productName}}</div>
+                            <!-- <div class="row">{{item.categoryId}}</div> -->
+                        </div>
+                        <div class="col">
+                            <button (click)="onDecrementQuantity(item.productId)" class="quantityBtn">-</button><span
+                                class="p-2">{{item.quantity}}</span><button
+                                (click)="onIncrementQuantity(item.productId)" #incrementButton class="quantityBtn">+</button>
+                        </div>
+                        <div class="col">{{item.unitPrice | currency:'INR'}}<button (click)="onRemoveItem(item.productId)"
+                                class="close"> &#10005;</button></div>
+                    </div>
+                </div>
+                <div><button class="emptyCart text-muted" (click)="onEmptyCart()">Empty Cart</button></div>
+            </div>
+            <div class="col-md-4 mt-4 summary">
+                <div>
+                    <h5><b>Summary</b></h5>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left:0;">ITEMS {{cartItems?.length}}</div>
+                    <div class="col text-right">{{totalAmount | currency:'INR'}}</div>
+                </div>
+                <form>
+                    <p>SHIPPING</p>
+                    <select>
+                        <option class="text-muted">Standard-Delivery- {{50.00 | currency:'INR'}}</option>
+                    </select>
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL PRICE</div>
+                    <div class="col text-right">{{totalAmount+50.00 | currency:'INR'}}</div>
+                </div>
+                <button class="add-btn" (click)="onConfirm()">Continue to Address</button>
+            </div>
+
+            <div class="back-to-shop"><a class="continue-shop" [routerLink]="['/product']">&leftarrow;</a><span
+                    class="text-muted">Continue shopping</span></div>
+        </div>
+        <ng-template #emptyCart>
+            <h1 class="text-center mt-4">Your Cart is Empty ...</h1>
+            <div class="back-to-shop"><a class="continue-shop" [routerLink]="['/product']">&leftarrow;</a><span
+                    class="text-muted">Back to shop</span></div>
+
+        </ng-template>
+
+    </div>
+
+</div>

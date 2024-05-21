@@ -1,0 +1,25 @@
+<div class="container">
+    <header>
+      <!-- <img src="etsy-logo.png" alt="Etsy Logo"> -->
+      <!-- <nav>
+        <span>Shipping</span> > <span>Payment</span> > <span>Review</span>
+      </nav> -->
+    </header>
+    <h2>Enter your shipping address</h2>
+    <div>
+      <input type="email" [(ngModel)]="addressObj.email" readonly placeholder="Email">
+      <!-- <input type="email" placeholder="Confirm email"> -->
+      <select name="country" [(ngModel)]="addressObj.country">
+        <option value="">Country</option>
+        <option value="India">India</option>
+       
+      </select>
+      <input type="text" [(ngModel)]="addressObj.name" readonly placeholder="Full name (first and last)">
+      <input type="text" [(ngModel)]="addressObj.streetAddress" placeholder="Street address">
+      
+      <input type="text" [(ngModel)]="addressObj.city" placeholder="City">
+      <input type="text" [(ngModel)]="addressObj.postalCode" placeholder="Postal code">
+      <input type="text" [(ngModel)]="addressObj.state" placeholder="Province/State">
+      <button type="submit"  class="button" (click)="setUserAddress()">Confirm Order</button>
+    </div>
+  </div>

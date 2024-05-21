@@ -1,0 +1,90 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img src="/assets/img/logo.png" class="brand-logo" alt="logo" />
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ng-container *ngIf="!authService.isLoggedIn()">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['login']">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['register']">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['product']">Products</a>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-container *ngIf="authService.isLoggedIn() && authService.isAdmin() == false ">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link"  [routerLink]="['/']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/product']">Products</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/cart']">Cart</a>
+        </li>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['order_items']">My Orders</a></li>
+            <li><a class="logout dropdown-item" (click)="onLogout()">Logout</a></li>
+           
+          </ul>
+        </div>
+        
+      </ul>
+      
+    </ng-container>
+    <ng-container *ngIf="authService.isLoggedIn() && authService.isAdmin() == true ">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/admin/products']">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/admin/category']">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/admin/customers']">Customers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/admin/orders']">Orders</a>
+        </li>
+        
+      </ul>
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Profile
+        </a>
+        <ul class="dropdown-menu">
+          
+          <li><a class="logout dropdown-item" (click)="onLogout()">Logout</a></li>
+          
+        </ul>
+      </div>
+    </ng-container>
+    <div class="search-container nav-item text-center">
+      <input type="text" [(ngModel)]="searchString" class="search-box" placeholder="search brand, product">
+      <button class="search-btn" (click)="searchProducts()">search</button>
+   </div>
+    </div>
+  </div>
+</nav>
+
+
+<ul class="links-container" >
+    <li class="link-item" *ngFor="let cat of categoryList"><a [routerLink]="['/category/products',cat.categoryId]" class="link">{{cat.categoryName}}</a></li>
+</ul>

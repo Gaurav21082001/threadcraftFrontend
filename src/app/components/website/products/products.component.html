@@ -1,0 +1,24 @@
+
+<section class="product">
+    <h2 class="product-category">Products</h2>
+   
+    <div class="product-container" >
+        <div class="product-card" *ngFor="let product of productList">
+            <div class="product-image">
+
+                <span class="discount-tag" *ngIf="product.stock < 10 && product.stock>0">Only few items left {{product.stock}}</span>
+                <span class="discount-tag" *ngIf="product.stock==0">Out of Stock</span>
+                
+                
+                <img [src]="product.imageUrl" class="product-thumb" alt="">
+                <button class="card-btn" [routerLink]="['/productDetails',product.productId]">view</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">{{product.productName.slice(0,13)}}</h2>
+                <p class="product-short-des">{{product.description}}</p>
+                <span class="price">{{product.price | currency:'INR'}} </span><span class="actual-price">{{product.actualPrice | currency:'INR'}}</span>
+            </div>
+        </div>
+    
+    </div>
+</section>

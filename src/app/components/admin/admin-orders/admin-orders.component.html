@@ -1,0 +1,44 @@
+<div class="row">
+    <div>
+        <div class="card">
+            <div class="card-header bg-success">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Orders</h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">OrderId</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Total Amount</th>
+                    
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orderList">
+                    <td>
+                    <span class="mx-2">{{order.orderId}}</span></td>
+                    <td>{{order.userId}}</td>
+                    <td>{{order.netAmount | currency:'INR'}}</td>
+                    <td>
+                        
+                        <Select (change)="onClick($event,order.orderId)">
+                            <Option>{{order.status}}</Option>
+                            <Option *ngFor="let status of orderStatusOptions" [value]="status">{{status}}</Option>
+                        </Select>
+                    </td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+</div>

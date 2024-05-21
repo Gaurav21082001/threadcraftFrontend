@@ -1,0 +1,28 @@
+
+
+
+        <body>
+            <div class="container">
+                <h1>Sign up</h1>
+                <form id="register-form">
+                  <label for="name">Name:</label>
+                  <input type="text" [(ngModel)]="signupObj.name" id="name" name="name" required>
+              
+                  <label for="email">Email:</label>
+                  <input type="email" [(ngModel)]="signupObj.email" id="email" name="email" required>
+              
+                  <label for="phone">Phone Number:</label>
+                  <input type="tel" [(ngModel)]="signupObj.phoneNumber" id="phone" name="phone" required>
+              
+                  <label for="password">Password:</label>
+                  <input type="password" [(ngModel)]="signupObj.password" id="password" name="password" required>
+              
+                  <label for="confirm-password">Confirm Password:</label>
+                  <input type="password" id="confirm-password" [(ngModel)]="signupObj.confirmPassword" name="confirm-password" required>
+              
+                  <button type="submit" (click)="onSubmit()">Sign up</button>
+                </form>
+                <p>Already have account? <a [routerLink]="['/login']">Sing in</a></p>
+              </div>
+        
+        </body>

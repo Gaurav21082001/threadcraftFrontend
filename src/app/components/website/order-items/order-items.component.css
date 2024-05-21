@@ -1,0 +1,22 @@
+.order-id {
+    cursor: pointer;
+    color: #6fb0f5;
+  }
+  
+  .order-id:hover {
+    text-decoration: underline;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .order{
+    padding: 10%;
+  }
